@@ -11,6 +11,7 @@ import com.product.converter.ProductConverter;
 import com.product.dao.ProductDao;
 import com.product.entity.ProductEntity;
 import com.product.model.ProductModel;
+import com.product.model.SignupModel;
 import com.product.service.ProductService;
 @Service
 
@@ -46,6 +47,13 @@ public class ProductServiceImpl implements ProductService{
 		ProductEntity productEntity = productDao.findById(id);
 		ProductModel productModel = productConverter.entityToModel(productEntity);
 		return productModel;
+	}
+
+
+	@Override
+	public void signUp(SignupModel signupModel) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

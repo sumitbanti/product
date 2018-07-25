@@ -13,6 +13,7 @@
 
 
 	<mvc:annotation-driven />
+	
 
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 

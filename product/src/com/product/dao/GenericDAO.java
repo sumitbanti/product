@@ -44,8 +44,22 @@ public abstract class GenericDAO <E, PK extends Serializable> implements Seriali
 	}
 	
 	public Serializable save(E entity) {
-
-		return sessionFactory.getCurrentSession().save(entity);
+		
+		Transaction transaction =null;
+		Session session = sessionFactory.getCurrentSession();
+		transaction = session.beginTransaction();
+		
+		try {
+			sessionFactory.getCurrentSession().save(entity);
+			
+		} catch (Exception e) {
+			System.out.println("Error");
+		}finally{
+			transaction.commit();
+			System.out.println("Hello");
+		}
+		System.out.println("Hi");
+		return null;
 	}
 	
 	public void saveOrUpdate(E entity) {

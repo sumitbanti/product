@@ -16,6 +16,7 @@ import com.product.serviceImpl.ProductServiceImpl;
 
 
 @Controller
+
 public class ProductController {
 	@Autowired
 	private ProductServiceImpl productServiceImpl;
@@ -27,12 +28,12 @@ public class ProductController {
 		modelMap.addAttribute("test", "667867576");
 		return "home"; 
 	}*/
-	@RequestMapping(value = "/", method=RequestMethod.GET)
+	/*@RequestMapping(value = "/", method=RequestMethod.GET)
 	public String display(ModelMap modelMap){
 		
 		modelMap.addAttribute("products",productServiceImpl.getAllProducts());
 		return "home";
-	}
+	}*/
 	
 	@RequestMapping("/add-product")
 	public ModelAndView addEmployeeForm() throws Exception{

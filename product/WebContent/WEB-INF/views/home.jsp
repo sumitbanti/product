@@ -1,178 +1,209 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Collapsible sidebar using Bootstrap 3</title>
+
+<!-- Bootstrap CSS CDN -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Our Custom CSS -->
+<link rel="stylesheet" href="<%=basePath%>resources/css/login.css">
+<link rel="stylesheet" href="<%=basePath%>resources/css/style.css">
+<link rel="stylesheet" href="<%=basePath%>resources/css/sign-up.css">
+<!-- Scrollbar Custom CSS -->
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
-<link rel="stylesheet"
-	href="https://formden.com/static/cdn/bootstrap-iso.css" />
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<script src="../dist/datepicker.js"></script>
-
-<title>MyApp</title>
 </head>
 <body>
 
-	<%-- <c:forEach items="${test}" var="student">
-    <p>${student.name}</p><br/>
-    <p>${student.status}</p><br/>
-    <p>${student.date}</p><br/>
-    
-</c:forEach> --%>
-	<table style="width: 50%;" class="table table-striped">
-		<%-- <tr>
-			<td align="right">
-				<!-- <a href="#"
-				class="btn btn-primary a-btn-slide-text"> <span
-					class="glyphicon glyphicon-plus" aria-hidden="true" data-target="#myModal"></span> <span><strong>Add</strong></span>
-			</a> -->
-				<button type="button" class="btn btn-primary a-btn-slide-text"
-					data-toggle="modal" data-target="#myModal">Add</button>
-			</td>
+	<div class="wrapper">
+		<!-- Sidebar Holder -->
+		<nav id="sidebar">
+			<!-- <div id="dismiss">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                </div> -->
 
-			<div class="modal fade" id="myModal" role="dialog">
-				<div class="modal-dialog">
-
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Fill Up Data</h4>
-						</div>
-					
-						<div class="modal-body">
-							<form action="/product/save" method="post">
-								<label data-error="wrong" data-success="right"
-									for="orangeForm-name">Product name</label> <input type="text"
-									id="orangeForm-name" class="form-control validate"
-									placeholder=" Enter product name" name="name">
-								<div></div>
-								<br>
-
-								<div class="dropdown">
-								
-								
-								<label data-error="wrong" data-success="right"
-									for="orangeForm-name">Category name</label> <input type="text"
-									id="orangeForm-name" class="form-control validate"
-									placeholder=" Enter product name" name="name">
-								
-									<!-- <button class="orm-control btn btn-default dropdown-toggle"
-										type="button" data-toggle="dropdown" name="name">
-										Select Category <span class="caret"></span>
-									</button>
- -->
-
-									<ul class="dropdown-menu" >
-										<c:forEach items="${products}" var="category">
-
-											<li><a name="name">${category.categoryModel.name}</a></li>
-
-										</c:forEach>
-									</ul>
-
-
-									<script type="text/javascript">
-									$('#category a').on('click', function(){    
-									    $(this).parent().parent().prev().html($(this).html() + '<span class="caret"></span>');    
-									})
-									</script>
-
-
-
-
-									
-								</div>
-
-								<br>
-
-								<div></div>
-
-								<div class="btn-group">
-									<button type="button"
-										class="form-control btn btn-default dropdown-toggle"
-										data-toggle="dropdown">
-										Select Status <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu" role="menu" id="status">
-										<li><a href="#" name="inactive">Inactive</a></li>
-										<li><a href="#" name="active">Active</a></li>
-
-									</ul>
-
-									<script type="text/javascript">
-									$('.dropdown-menu a').on('click', function(){    
-									    $(this).parent().parent().prev().html($(this).html() + '<span class="caret"></span>');    
-									})
-								</script>
-								</div>
-
-								
-							
-
-
-						
-
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary" >Save</button>
-						</div>
-						</form>
-						</div>
-					</div>
-
-				</div>
+			<div class="sidebar-header">
+				<h3>Welcome</h3>
 			</div>
 
-		</tr>** --%>
-		<tr>
-			<td>
-				<table style="width: 100%;" class="table table-bordered">
-
-					<tr>
-						<th scope="col">Product ID</th>
-						<th scope="col">Product Name</th>
-						<!-- <th scope="col">Category Name</th>  -->
-						<th scope="col">Status</th>
-						<th scope="col">Date</th>
-						<th scope="col">Category Name</th>
-						<th scope="col">Edit</th>
-
-					</tr>
-
-					<c:forEach items="${products}" var="student">
-						<tr>
-							<td>${student.id}</td>
-							<td>${student.name}</td>
-							<td>${student.status}</td>
-							<td>${student.date}</td>
-							<td>${student.categoryModel.name}</td>
-							<td><a href="<c:url value='editemp/${student.id}' />" class="btn btn-primary a-btn-slide-text">
-									<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-									<span><strong>Edit</strong></span>
-							</a></td>
-						</tr>
-					</c:forEach>
+			<ul class="list-unstyled components">
+				<p>Dummy Heading</p>
+				<li class="active"><a href="#homeSubmenu"
+					data-toggle="collapse">Home</a> <!-- <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li><a href="#">Home 1</a></li>
+                            <li><a href="#">Home 2</a></li>
+                            <li><a href="#">Home 3</a></li>
+                        </ul> --></li>
+				<li><a href="#">About</a> <a href="#pageSubmenu"
+					data-toggle="collapse" aria-expanded="false">Services</a>
+					<ul class="collapse list-unstyled" id="pageSubmenu">
+						<li><a href="#">Feed</a></li>
+						<li><a href="#">Egg</a></li>
+						<li><a href="#">Page 3</a></li>
+					</ul></li>
+				<li><a href="#">Portfolio</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
 
 
-				</table>
-	</table>
+		</nav>
+
+		<!-- Page Content Holder -->
+		<div id="content">
+
+			<!-- Login start -->
+
+			<ul class="nav navbar-nav navbar-right">
+				<!-- <li><p class="navbar-text">Already have an account?</p></li> -->
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+					<ul id="login-dp" class="dropdown-menu">
+						<li>
+							<div class="row">
+								<div class="col-md-12">
+
+
+
+									<form class="form" role="form" method="post" action="login"
+										accept-charset="UTF-8" id="login-nav">
+										<div class="form-group">
+											<label class="sr-only" for="exampleInputEmail2">Email
+												address</label> <input type="email" class="form-control"
+												id="exampleInputEmail2" placeholder="Email address" required>
+										</div>
+										<div class="form-group">
+											<label class="sr-only" for="exampleInputPassword2">Password</label>
+											<input type="password" class="form-control"
+												id="exampleInputPassword2" placeholder="Password" required>
+											<div class="help-block text-right">
+												<a href="">Forget the password ?</a>
+											</div>
+										</div>
+										<div class="form-group" id="test">
+											<button type="submit" class="btn btn-primary btn-block"
+												id="test">Sign in</button>
+										</div>
+
+										<div class="checkbox">
+											<label> <input type="checkbox"> keep me
+												logged-in
+											</label>
+										</div>
+									</form>
+								</div>
+								<div class="bottom text-center">
+									New here ?
+									<button
+										onclick="document.getElementById('id01').style.display='block'">
+										<b>Join Us</b>
+									</button>
+								</div>
+							</div>
+						</li>
+					</ul></li>
+			</ul>
+			<!-- login end -->
+
+
+
+		</div>
+	</div>
+	<!-- Sign up start -->
+
+	<div id="id01" class="modal">
+		<span onclick="document.getElementById('id01').style.display='none'"
+			class="close" title="Close Modal">&times;</span>
+		<form class="modal-content" role="form" action="sign-up" method="post">
+			<div class="container">
+				<h1>Sign Up</h1>
+				<p>Please fill in this form to create an account.</p>
+				<hr>
+				<label for="email"><b>Email</b></label> <input type="text"
+					placeholder="Enter Email" name="email" required> <label
+					for="psw"><b>Password</b></label> <input type="password"
+					placeholder="Enter Password" name="password" required> <label
+					for="psw-repeat"><b>Repeat Password</b></label> <input
+					type="password" placeholder="Repeat Password" name="repeatPassword"
+					required> <label> <input type="checkbox"
+					checked="checked" name="remember" style="margin-bottom: 15px">
+					Remember me
+				</label>
+
+				<p>
+					By creating an account you agree to our <a href="#"
+						style="color: dodgerblue">Terms & Privacy</a>.
+				</p>
+
+				<div class="clearfix">
+					<button type="button"
+						onclick="document.getElementById('id01').style.display='none'"
+						class="cancelbtn">Cancel</button>
+					<button type="submit" class="signupbtn" >Sign Up</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<!-- Sign up end -->
+
+
+	<div class="overlay"></div>
+
+
+	<!-- jQuery CDN -->
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<!-- Bootstrap Js CDN -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- jQuery Custom Scroller CDN -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#sidebar").mCustomScrollbar({
+				theme : "minimal"
+			});
 	
-	<a href="add-product">Add Product</a>
-	<!-- model -->
+			$('#dismiss, .overlay').on('click', function() {
+				$('#sidebar').removeClass('active');
+				$('.overlay').fadeOut();
+			});
+	
+			$('#sidebarCollapse').on('click', function() {
+				$('#sidebar').addClass('active');
+				$('.overlay').fadeIn();
+				$('.collapse.in').toggleClass('in');
+				$('a[aria-expanded=true]').attr('aria-expanded', 'false');
+			});
+		});
+	</script>
 
-
+	<!-- sign up start -->
+	<script>
+		// Get the modal
+		var modal = document.getElementById('id01');
+	
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
+	<!-- sign up close -->
 
 </body>
 </html>
