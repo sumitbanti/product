@@ -12,6 +12,7 @@ public class MessageUtil {
 	}
 	public String getBundle(String key) {
        System.out.println(resourceBundle.getString(key));
+       System.out.println();
 		return resourceBundle.getString(key);
 	}
 
